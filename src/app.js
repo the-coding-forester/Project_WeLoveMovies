@@ -1,12 +1,24 @@
 if (process.env.USER) require("dotenv").config();
+
 const express = require("express");
+const app = express();
 const cors = require("cors");
 
 
-const app = express();
+//Handlers
+
+
+
+//Routers
+
+
 
 app.use(express.json());
 app.use(cors());
+
+//Direct request based on URL
+
+
 
 // Not found handler
 app.use((req, res, next) => {
