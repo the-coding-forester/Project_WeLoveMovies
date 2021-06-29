@@ -16,10 +16,15 @@ const listMoviesIsShowingTrue = () => {
     .groupBy('m.title')
 }
 
-//read function
-
+//Return a single movie by ID
+const read = (movieId) => {
+  return knex('movies')
+    .select('*')
+    .where({ movie_id: movieId })
+}
 
 module.exports = {
   list,
   listMoviesIsShowingTrue,
+  read,
 };
