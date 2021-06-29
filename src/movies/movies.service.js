@@ -23,8 +23,19 @@ const read = (movieId) => {
     .where({ movie_id: movieId })
 }
 
+//List of theaters that are showing the movie with the given movie id
+//Will need to connect movies table, movies_theaters table, and the theaters table
+const getTheatersShowingMovie = (movieId) => {
+  return knex('movies as m')
+    .join("movies_theaters as mt", "m.movie_id", "mt.movie_id")
+    .join("theaters as t", "mt.theater_id", "t.theater_id")
+    .select("t.*", "mt.is_showing", "m.movie_id")
+    .where({ "mt.is_showing": true, "mt.movie_id": movieId })
+}
+
 module.exports = {
   list,
   listMoviesIsShowingTrue,
   read,
+  getTheatersShowingMovie,
 };
