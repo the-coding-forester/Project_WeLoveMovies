@@ -31,7 +31,7 @@ const list = async (req, res) => {
   res.json({ data: data });
 }
 
-//Route for ('/movies/:movieId')src/movies/movies.controller.js
+//Route for ('/movies/:movieId')
 const read = async (req, res, next) => {
   const data = res.locals.movie;
   res.json({ data: data[0] });
