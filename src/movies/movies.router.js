@@ -4,6 +4,12 @@ const methodNotAllowed = require('../errors/methodNotAllowed')
 
 const router = Router();
 
+//Route for ('/movies/:movieId/reviews')
+//Only the GET method is allowed
+router
+  .route("/:movieId/reviews")
+  .get(controller.getTheatersShowingMovie)
+  .all(methodNotAllowed);
 
 //Route for ('/movies/:movieId/theaters')
 //Only the GET method is allowed
