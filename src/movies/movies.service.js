@@ -33,12 +33,12 @@ const getTheatersShowingMovie = (movieId) => {
     .where({ "mt.is_showing": true, "mt.movie_id": movieId })
 }
 
-const getMovieReviewsWithCritics = (movieId) => {
-  return knex('movies as m')
-    .join('reviews as r', 'r.movie_id', 'm.movie_id')
+//This route should return all the `reviews` for the movie, including all the `critic` details added to a `critic` key of the review.
+const getMovieReviewsWithCritics = async (movieId) => {
+  return knex('reviews as r')
     .join('critics as c', 'c.critic_id', 'r.critic_id')
-    .select('r.*', 'c.*')
-    .where({ 'm.movie_id': movieId })
+    .select('*', 'c.created_at as critic_created', 'c.updated_at as critic_updated')
+    .where({ 'movie_id': movieId })
 }
 
 
