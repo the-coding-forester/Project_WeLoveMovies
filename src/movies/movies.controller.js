@@ -31,13 +31,13 @@ const list = async (req, res) => {
   res.json({ data: data });
 }
 
-//Route for ('/:movieId')
+//Route for ('/movies/:movieId')src/movies/movies.controller.js
 const read = async (req, res, next) => {
-  const data = res.local.movie;
+  const data = res.locals.movie;
   res.json({ data: data[0] });
 }
 
-//Route for ('/:movieId/theaters')
+//Route for ('/movies/:movieId/theaters')
 const getTheatersShowingMovie = async (req, res, next) => {
   const { movieId } = req.params;
   const data = await service.getTheatersShowingMovie(movieId);
