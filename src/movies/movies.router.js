@@ -2,13 +2,13 @@ const { Router } = require("express");
 const controller = require("./movies.controller");
 const methodNotAllowed = require('../errors/methodNotAllowed')
 
-const router = Router();
+const router = Router({ mergeParams: true });
 
 //Route for ('/movies/:movieId/reviews')
 //Only the GET method is allowed
 router
   .route("/:movieId/reviews")
-  .get(controller.getTheatersShowingMovie)
+  .get(controller.getMovieReviewsWithCritics)
   .all(methodNotAllowed);
 
 //Route for ('/movies/:movieId/theaters')
