@@ -33,9 +33,19 @@ const getTheatersShowingMovie = (movieId) => {
     .where({ "mt.is_showing": true, "mt.movie_id": movieId })
 }
 
+const getMovieReviewsWithCritics = (movieId) => {
+  return knex('movies as m')
+    .join('reviews as r', 'r.movie_id', 'm.movie_id')
+    .join('critics as c', 'c.critic_id', 'r.critic_id')
+    .select('r.*', 'c.*')
+    .where({ 'm.movie_id': movieId })
+}
+
+
 module.exports = {
   list,
   listMoviesIsShowingTrue,
   read,
   getTheatersShowingMovie,
+  getMovieReviewsWithCritics
 };
