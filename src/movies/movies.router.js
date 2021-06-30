@@ -8,7 +8,7 @@ const router = Router();
 //Route for ('/movies/:movieId/theaters')
 //Only the GET method is allowed
 router
-  .route("/:movies/theaters")
+  .route("/:movieId/theaters")
   .get(controller.getTheatersShowingMovie)
   .all(methodNotAllowed);
 
