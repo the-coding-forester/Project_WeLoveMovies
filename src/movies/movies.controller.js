@@ -44,8 +44,24 @@ const getTheatersShowingMovie = async (req, res, next) => {
   res.json({ data: data });
 }
 
+const getMovieReviewsWithCritics = async (req, res, next) => {
+  const { movieId } = req.params;
+  const data = await service.getMovieReviewsWithCritics(movieId);
+  res.json({ data: data });
+}
+
 module.exports = {
   list: asyncErrorBoundary(list),
-  read: [asyncErrorBoundary(movieExists), asyncErrorBoundary(read)],
-  getTheatersShowingMovie: [asyncErrorBoundary(movieExists), asyncErrorBoundary(getTheatersShowingMovie)]
+  read: [
+    asyncErrorBoundary(movieExists),
+    asyncErrorBoundary(read)
+  ],
+  getTheatersShowingMovie: [
+    asyncErrorBoundary(movieExists),
+    asyncErrorBoundary(getTheatersShowingMovie)
+  ],
+  getMovieReviewsWithCritics: [
+    asyncErrorBoundary(movieExists),
+    asyncErrorBoundary(getMovieReviewsWithCritics)
+  ]
 };
