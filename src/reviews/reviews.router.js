@@ -4,7 +4,13 @@ const methodNotAllowed = require('../errors/methodNotAllowed');
 
 const router = Router();
 
+//Route for ('/reviews/:reviewId')
+//Methods GET, UPDATE, and DELETE supported
 router
-  .route('/')
+  .route("/:reviewId")
+  .delete(controller.destroy)
+  .all(methodNotAllowed)
 
-modules.exports = router;
+
+
+module.exports = router;
