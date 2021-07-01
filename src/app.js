@@ -22,7 +22,7 @@ app.use(express.json());
 //Direct request based on URL
 app.use("/movies", moviesRouter);
 app.use('/reviews', reviewsRouter);
-app.use('./theaters', theatersRouter);
+app.use('/theaters', theatersRouter);
 
 // Not found handler
 app.use(notFound);
