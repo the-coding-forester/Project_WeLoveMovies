@@ -14,6 +14,7 @@ const notFound = require("./errors/notFound");
 //Routers
 const moviesRouter = require("./movies/movies.router");
 const reviewsRouter = require('./reviews/reviews.router');
+const theatersRouter = require('./theaters/theaters.router');
 
 //Use JSON format for data return
 app.use(express.json());
@@ -21,7 +22,7 @@ app.use(express.json());
 //Direct request based on URL
 app.use("/movies", moviesRouter);
 app.use('/reviews', reviewsRouter);
-
+app.use('./theaters', theatersRouter);
 
 // Not found handler
 app.use(notFound);
